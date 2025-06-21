@@ -11,7 +11,7 @@ public class Test_Player : MonoBehaviour
     {
         if (Mathf.Abs(move) >= 0)
         {
-            //Quaternion rot = transform.rotation;
+            //Quaternion rot = transform.rotation;s
 
             //transform.rotation = Quaternion.Euler(rot.x, Mathf.Sign(move) == 1 ? 0 : 180, rot.z);
 
