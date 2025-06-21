@@ -16,12 +16,20 @@ public class Test_Player : MonoBehaviour
             //transform.rotation = Quaternion.Euler(rot.x, Mathf.Sign(move) == 1 ? 0 : 180, rot.z);
 
             // Vector3(x,y,z);
-            var pos = transform.position;
-            pos.x += 0.5f;
-            pos.y += 0;
-            transform.position = pos;
+            //var pos = transform.position;
+            //pos.x += 0.5f;
+            //pos.y += 0;
+            //transform.position = pos;
         }
+        if (jump == true)
+        {
 
+            var pos = transform.position;
+            pos.x += 0;
+            pos.y += 0.5f;
+            transform.position = pos;
+
+        }
        
     }
 
