@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +6,9 @@ public class PlaneScript : MonoBehaviour
 {
     public GameObject Plane;
     GameObject[] step = new GameObject[10];
-    float speed = 10;
-    float disappear = -20;
-    float respawn = 30;
+    float speed = 20;
+    float disappear = -10;
+    float respawn = 20;
 
     void Start()
     {
@@ -36,11 +35,11 @@ public class PlaneScript : MonoBehaviour
         int x = (i + 9) % 10; //(i+9)Ç10Ç≈äÑÇ¡ÇΩó]ÇËÇxÇ∆Ç∑ÇÈÅB
         if (step[x].transform.localScale.y == 0.5)
         {
-            step[i].transform.localScale = step[x].transform.localScale + new Vector3(0, UnityEngine.Random.Range(0, 2), 0);
+            step[i].transform.localScale = step[x].transform.localScale + new Vector3(0, Random.Range(0, 2), 0);
         }
         else
         {
-            step[i].transform.localScale = step[x].transform.localScale + new Vector3(0, UnityEngine.Random.Range(-1, 2), 0);
+            step[i].transform.localScale = step[x].transform.localScale + new Vector3(0, Random.Range(-1, 2), 0);
         }
     }
 
