@@ -75,7 +75,7 @@ public class Test_Player : MonoBehaviour
         bool jump = Input.GetButtonDown("Jump");
         Move(x, jump);
         //d—Íˆ—ŠÖŒW
-        Vector3 force = new Vector3(0.0f, 100.0f, 100.0f);    // —Í‚ğİ’è
+        Vector2 force = new Vector2(0.0f, 10.0f);    // —Í‚ğİ’è
         m_rb.AddForce(force);  // —Í‚ğ‰Á‚¦‚é
 
     }
