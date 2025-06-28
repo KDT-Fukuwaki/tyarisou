@@ -1,9 +1,13 @@
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
+
+
 
 public class Test_Player : MonoBehaviour
 {
+    int jump_mode = 0;
+    int jump_frame = 0;
+
+    Rigidbody2D m_rb;
 
     //Move関数を使えるようにするために実装しています。
     //Move関数の中身の処理
@@ -23,12 +27,7 @@ public class Test_Player : MonoBehaviour
         }
         if (jump == true)
         {
-
-            var pos = transform.position;
-            pos.x += 0;
-            pos.y += 0.5f;
-            transform.position = pos;
-
+            jump_mode = 1;
         }
        
     }
@@ -37,6 +36,7 @@ public class Test_Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        m_rb = this.GetComponent<Rigidbody2D>();  // rigidbodyを取得
 
     }
 
@@ -48,8 +48,35 @@ public class Test_Player : MonoBehaviour
         // Vertical->上下の入力を対象とする
         //  要するにこの処理を何も押してなければ０、左右キーが押されれば、－1～１の間の値を返す。
 
+        //if (jump_mode==1) {
+        //    jump_frame +=1;
+        //}
+        if (jump_mode == 0){
+            var pos = transform.position;
+            pos.y -= 0.4f;
+            transform.position = pos;
+        }
+        else
+        {
+            jump_frame +=1; 
+        }
+        if (jump_mode == 1 && jump_frame <= 120){
+            var pos = transform.position;
+            pos.x += 0;
+            pos.y += 2.0f;
+            transform.position = pos;
+        }
+        else{
+            jump_frame = 0;
+            jump_mode = 0;
+        }
+
         float x = Input.GetAxis("Horizontal");
         bool jump = Input.GetButtonDown("Jump");
         Move(x, jump);
+        //重力処理関係
+        Vector3 force = new Vector3(0.0f, 100.0f, 100.0f);    // 力を設定
+        m_rb.AddForce(force);  // 力を加える
+
     }
 }
