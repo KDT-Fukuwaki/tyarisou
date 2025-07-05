@@ -55,7 +55,7 @@ public class Test_Player : MonoBehaviour
         if (jump_mode == 0)
         {
             var pos = transform.position;
-            pos.y -= 0.4f;
+            //pos.y -= 0.4f;
             transform.position = pos;
         }
         else
