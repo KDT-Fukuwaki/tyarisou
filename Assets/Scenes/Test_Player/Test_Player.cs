@@ -48,27 +48,25 @@ public class Test_Player : MonoBehaviour
         // Vertical->上下の入力を対象とする
         //  要するにこの処理を何も押してなければ０、左右キーが押されれば、－1～１の間の値を返す。
 
-        //if (jump_mode == 1)
-        //{
-        //    jump_frame += 1;
-        //}
         if (jump_mode == 0)
         {
             var pos = transform.position;
-            //pos.y -= 0.4f;
+            pos.x = -2f;
             transform.position = pos;
         }
         else
         {
             jump_frame += 1;
         }
-        if (jump_mode == 1 && jump_frame <= 120){
+        if (jump_mode == 1 && jump_frame <= 120)
+        {
             var pos = transform.position;
-            pos.x += 0;
-            pos.y += 2.0f;
+            pos.x = -2f;
+            pos.y += 0.05f;
             transform.position = pos;
         }
-        else{
+        else if (jump_frame >= 180)
+        {
             jump_frame = 0;
             jump_mode = 0;
         }
@@ -76,9 +74,7 @@ public class Test_Player : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         bool jump = Input.GetButtonDown("Jump");
         Move(x, jump);
-        //重力処理関係
-        Vector2 force = new Vector2(0.0f, 0.0f);    // 力を設定
-        m_rb.AddForce(force);  // 力を加える
+
 
     }
 }
