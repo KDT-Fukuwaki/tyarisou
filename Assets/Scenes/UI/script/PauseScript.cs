@@ -15,6 +15,7 @@ public class PauseScript : MonoBehaviour {
         pauseUI.SetActive(false);
 	}
  
+
 	// Update is called once per frame
 	void Update() {
 		//　ポーズボタンを押した時
