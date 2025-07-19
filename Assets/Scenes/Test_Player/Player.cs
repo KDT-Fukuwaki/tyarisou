@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Player : MonoBehaviour
 {
+    enum player{
+    zero, 
+    one,
+    two
+        };
+
 
     public Rigidbody2D rd;
 
@@ -11,6 +19,7 @@ public class Player : MonoBehaviour
 
     public bool JumpFlag = false;
 
+    int jump_situation = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -21,32 +30,45 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"地面判定 : {JumpFlag}");
+       // Debug.Log($"地面判定 : {JumpFlag}");
         //　キーを入力されたとき
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (JumpFlag == true)
+            jump_situation++;
+            Debug.Log($"地面判定 : {jump_situation}");
+            if (jump_situation <= 2)
             {
-                rd.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
+                if (JumpFlag == true)
+                {
+                 rd.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
 
+                }
             }
         }
     }
 
-
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
+      
         if (collision.gameObject.tag == "floor")
         {
             JumpFlag = true;
+           
         }
+     
+        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "floor")
+        if (jump_situation >=2)
         {
-            JumpFlag = false;
+            if (collision.gameObject.tag == "floor")
+            {
+                JumpFlag = false;
+                jump_situation=0;
+            }
         }
     }
 }// class
