@@ -7,7 +7,7 @@ public class PlaneScript : MonoBehaviour
     public GameObject Plane;
     GameObject[] step = new GameObject[10];
     float speed = 20;
-    float disappear = -10;
+    float disappear = -30;
     float respawn = 30;
 
     void Start()
