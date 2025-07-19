@@ -14,6 +14,7 @@ public class cameraManager : MonoBehaviour
     [SerializeField]
     private float scaleThreshold = 5.0f;
 
+    
     // カメラのY座標が変化する速度（スムーズに動かすため）
     [SerializeField]
     private float smoothSpeed = 0.5f;
