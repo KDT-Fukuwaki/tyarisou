@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Debug.Log($"地面判定 : {JumpFlag}");
         //　キーを入力されたとき
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -32,26 +33,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "floor")
         {
-
             JumpFlag = true;
-
         }
     }
 
-    void OnCollisionExit(Collision collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "floor")
         {
-
             JumpFlag = false;
-
         }
     }
-
-
-}
+}// class
 
