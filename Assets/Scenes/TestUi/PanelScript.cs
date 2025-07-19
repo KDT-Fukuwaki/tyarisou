@@ -10,6 +10,32 @@ public class PlaneScript : MonoBehaviour
     float disappear = -30;
     float respawn = 30;
 
+    /// <summary>
+    /// ˆê’è‚ÌŠî€’l‚æ‚è‘å‚«‚¢‚©”äŠr@
+    /// </summary>
+    /// <param name="scaleThreshold"></param>
+    /// <returns></returns>
+    public bool IsScaleThresholdPlus(float standard_pos, float scaleThreshold)
+    {
+        for(int i=0;i<step.Length;i++)
+        {
+            var scale =  step[i].transform.localScale;
+            if (scale.y >= standard_pos + scaleThreshold) return true;
+        }
+        return false;
+    }
+
+    public bool IsScaleThresholdMinus(float standard_pos, float scaleThreshold)
+    {
+        for (int i = 0; i < step.Length; i++)
+        {
+            var scale = step[i].transform.localScale;
+            if (scale.y <= standard_pos - scaleThreshold) return true;
+        }
+        return false;
+    }
+
+
     void Start()
     {
         for (int i = 0; i < step.Length; i++)
