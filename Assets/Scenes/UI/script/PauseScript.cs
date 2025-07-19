@@ -29,4 +29,12 @@ public class PauseScript : MonoBehaviour {
 			}
 		}
 	}
+
+	//UI‚Ì•\Ž¦”ñ•\Ž¦
+	public void SetActive(bool isActive)
+	{
+        pauseUI.SetActive(isActive);
+    }
+
+
 }
