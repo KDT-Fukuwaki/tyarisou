@@ -20,7 +20,7 @@ public class PlaneScript : MonoBehaviour
         for(int i=0;i<step.Length;i++)
         {
             var scale =  step[i].transform.localScale;
-            if (scale.y >= standard_pos + scaleThreshold) return true;
+            if (scaleThreshold >= standard_pos - scale.y / 2) return true;
         }
         return false;
     }
@@ -30,7 +30,7 @@ public class PlaneScript : MonoBehaviour
         for (int i = 0; i < step.Length; i++)
         {
             var scale = step[i].transform.localScale;
-            if (scale.y <= standard_pos - scaleThreshold) return true;
+            if (scaleThreshold <= standard_pos - scale.y / 2) return true;
         }
         return false;
     }

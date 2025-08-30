@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class cameraManager : MonoBehaviour
@@ -21,6 +22,9 @@ public class cameraManager : MonoBehaviour
 
     private Vector3 initialCameraPosition;
 
+    Transform m_tfm;
+
+
     PlaneScript m_planeScript;
 
     // 基準値変数
@@ -30,17 +34,17 @@ public class cameraManager : MonoBehaviour
     {
         // カメラの初期Y座標を保存
         initialCameraPosition = transform.position;
-
+        m_tfm = transform;
         // groundPanelが設定されていない場合の警告
         if (groundPanel == null)
         {
-            Debug.LogWarning("Ground Panelが設定されていません。インスペクターで設定してください。", this);
+            UnityEngine.Debug.LogWarning("Ground Panelが設定されていません。インスペクターで設定してください。", this);
         }
 
         m_planeScript = groundPanel.GetComponent<PlaneScript>();
 
         // 基準値変数　＝　現在のcamera座標
-        standard_pos = initialCameraPosition.y;
+        standard_pos = m_tfm.position.y;
 
     }
 
@@ -51,35 +55,37 @@ public class cameraManager : MonoBehaviour
         if (groundPanel != null)
         {
             float panelScaleY = groundPanel.transform.localScale.y;
-            Vector3 targetPosition = initialCameraPosition;
+            Vector3 targetPosition = m_tfm.position;
+
+            UnityEngine.Debug.Log($"カメラ座標 : {targetPosition.y}");
 
             // PanelのYスケールが閾値以上の場合
             //if (panelScaleY >= scaleThreshold)
 
             // 基準値変数が指定数より多きとき
             // if (true){ camera座標を増加　基準値変数　＝　現在のcamera座標｝
-            if (m_planeScript.IsScaleThresholdPlus(standard_pos,scaleThreshold))
+            if (m_planeScript.IsScaleThresholdPlus(standard_pos, scaleThreshold))
             {
                 // カメラの目標Y座標を上げる
                 // initialCameraPosition.y に heightOffset を加算
-                targetPosition.y = initialCameraPosition.y + heightOffset;
-                Debug.Log($"+デバック確認");
+                targetPosition.y = m_tfm.position.y + heightOffset;
+                UnityEngine.Debug.Log($"+デバック確認");
 
-                standard_pos = initialCameraPosition.y;
+                standard_pos = m_tfm.position.y;
 
 
             }
 
             // 基準値変数が指定数より小さいとき
             // if(true) { camera座標を現象　基準値変数 ＝　現在のcamera座標｝
-            if (m_planeScript.IsScaleThresholdMinus(standard_pos,scaleThreshold))
+            if (m_planeScript.IsScaleThresholdMinus(standard_pos, 4.5f))
             {
                 // カメラの目標Y座標を上げる
                 // initialCameraPosition.y に heightOffset を加算
-                targetPosition.y = initialCameraPosition.y - heightOffset;
-                Debug.Log($"-デバック確認");
+                targetPosition.y = m_tfm.position.y - heightOffset;
+                UnityEngine.Debug.Log($"-デバック確認");
 
-                standard_pos = initialCameraPosition.y;
+                standard_pos = m_tfm.position.y;
 
 
             }
