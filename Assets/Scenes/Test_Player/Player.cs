@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
@@ -80,5 +81,20 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+
+    /*追加*/
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+   if (collision.gameObject.tag == "GameOver")
+        {
+            Debug.Log("ゲームオーバー");
+        }
+
+    }
+
+
+
 }// class
 
