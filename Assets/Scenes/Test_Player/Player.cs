@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
             //　キーが押されたらjumpsituationのカウントを進める
             jump_situation++;
             //　確認、デバッグ用
-            Debug.Log($"地面判定 : {jump_situation}");
+            UnityEngine.Debug.Log($"地面判定 : {jump_situation}");
             //　jumpsituationを使用して二階までjumpを可能にする
             if (jump_situation <= 2)
             {
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
 
    if (collision.gameObject.tag == "GameOver")
         {
-            Debug.Log("ゲームオーバー");
+            UnityEngine.Debug.Log("ゲームオーバー");
         }
 
     }
