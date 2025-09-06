@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject score = null; // Textオブジェクト
     public int score_num = 0; // スコア変数
     public float frame = 0;
-    bool enable = true;
+    public bool enable = true;
 
     // 初期化
     void Start()

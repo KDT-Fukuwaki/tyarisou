@@ -61,8 +61,8 @@ public class GameManager : MonoBehaviour
         // ゲームオーバーメッセージにスコアを表示
         if (gameOverText1 != null)
         {
-            gameOverText1.text = $"Game Over\nScore: {scoreManager.score_num}m\n";
-            gameOverText2.text = $"Time: {scoreManager2.score_num:F1}s\n";
+            gameOverText1.text = $"{scoreManager.score_num}m\n";
+            gameOverText2.text = $"{scoreManager2.score_num}s\n";
         }
     }
 
