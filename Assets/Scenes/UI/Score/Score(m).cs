@@ -25,15 +25,18 @@ public class ScoreManager : MonoBehaviour
     {
         if (enable) { 
 
-            frame++;
+            frame += Time.deltaTime;
+
             // test (スコア増加)
-            if(frame % 30 == 0) { 
+            if (frame >= 0.05f) {
+                frame = 0.0f;
                 score_num += 1;
             }
+
             // オブジェクトからTextコンポーネントを取得
             Text score_text = score.GetComponent<Text>();
             // テキストの表示を入れ替える
-            score_text.text = score_num + "m";
+            score_text.text = $"{score_num,4:D0}m";
 
         }
     }

@@ -31,11 +31,12 @@ public class ScoreManager2 : MonoBehaviour
     void Update()
     {
         if (enable) { 
-        // オブジェクトからTextコンポーネントを取得
-        Text score_text = score_object.GetComponent<Text>();
+            // オブジェクトからTextコンポーネントを取得
+            Text score_text = score_object.GetComponent<Text>();
 
-        m_testTime += Time.deltaTime;
-        score_text.text = $"{(int)m_testTime,4:D0}s";
+            m_testTime += Time.deltaTime;
+            score_num = (int)m_testTime;
+            score_text.text = $"{score_num,4:D0}s";
         }
 
     }

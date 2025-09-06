@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour
         if (isGameOver)
         {
             GameOver();
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
         }
     }
 
