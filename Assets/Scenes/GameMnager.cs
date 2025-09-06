@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     public Text gameOverText2;           // ゲームオーバーのメッセージ（s）
     public ScoreManager scoreManager;   // スコアを管理するスクリプト
     public ScoreManager2 scoreManager2;   // スコア2を管理するスクリプト
-    public GameObject retry;
-    public GameObject end;
+    //public GameObject retry;
+    //public GameObject end;
 
     private bool isGameOver = false;
 
@@ -23,25 +23,24 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-        OnRestartButtonClicked(); 
-        OnQuitButtonClicked();
+
     }
 
-    public void OnRestartButtonClicked()
-    {
-        Debug.Log("再挑戦ボタンがクリックされました！");
-        // ここにゲームのリセット処理を追加する
+    //public void OnRestartButtonClicked()
+    //{
+    //    Debug.Log("再挑戦ボタンがクリックされました！");
+    //    // ここにゲームのリセット処理を追加する
 
-        RestartGame();
-    }
+    //    RestartGame();
+    //}
 
-    // 終了ボタンがクリックされたときの動作
-    public void OnQuitButtonClicked()
-    {
-        Debug.Log("終了ボタンがクリックされました！");
-        Application.Quit();
-        QuitGame();
-    }
+    //// 終了ボタンがクリックされたときの動作
+    //public void OnQuitButtonClicked()
+    //{
+    //    Debug.Log("終了ボタンがクリックされました！");
+    //    Application.Quit();
+    //    QuitGame();
+    //}
 
 
     void GameOver()
@@ -68,44 +67,44 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 再挑戦ボタンの処理
-    public void RestartGame()
-    {
-        // ゲームオーバー状態をリセット
-        isGameOver = false;
+//    // 再挑戦ボタンの処理
+//    public void RestartGame()
+//    {
+//        // ゲームオーバー状態をリセット
+//        isGameOver = false;
 
-        // プレイヤーを初期位置に戻す
-        player.transform.position = new Vector3(0, 0, 0);
+//        // プレイヤーを初期位置に戻す
+//        player.transform.position = new Vector3(0, 0, 0);
 
-        // スコアとタイマーをリセット
-        if (scoreManager != null)
-        {
-            scoreManager.score_num = 0;
-            scoreManager.frame = 0;
-            scoreManager.enabled = true;  // ScoreManagerを有効にしてスコアを更新
+//        // スコアとタイマーをリセット
+//        if (scoreManager != null)
+//        {
+//            scoreManager.score_num = 0;
+//            scoreManager.frame = 0;
+//            scoreManager.enabled = true;  // ScoreManagerを有効にしてスコアを更新
 
-            scoreManager2.score_num = 0;
-            scoreManager2.enabled = true;  // ScoreManager2を有効にしてスコアを更新
+//            scoreManager2.score_num = 0;
+//            scoreManager2.enabled = true;  // ScoreManager2を有効にしてスコアを更新
 
-        }
+//        }
 
-        // ゲームオーバーメニューを非表示にする
-        if (gameOverMenu != null)
-        {
-            gameOverMenu.SetActive(false);
-        }
-    }
+//        // ゲームオーバーメニューを非表示にする
+//        if (gameOverMenu != null)
+//        {
+//            gameOverMenu.SetActive(false);
+//        }
+//    }
 
-    // ゲーム終了ボタンの処理
-    public void QuitGame()
-    {
-        // アプリケーションを終了
-        Debug.Log("Quit Game");
-        Application.Quit();
+//    // ゲーム終了ボタンの処理
+//    public void QuitGame()
+//    {
+//        // アプリケーションを終了
+//        Debug.Log("Quit Game");
+//        Application.Quit();
 
-        // エディタでの動作確認用
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
-    }
+//        // エディタでの動作確認用
+//#if UNITY_EDITOR
+//        UnityEditor.EditorApplication.isPlaying = false;
+//#endif
+//    }
 }
