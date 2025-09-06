@@ -1787,9 +1787,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5d568ad899f544ba88e7ef10be6697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 644389304}
-  gameOverY: -600
+  player: {fileID: 2088231836}
+  gameOverY: -30
   gameOverMenu: {fileID: 1387385983}
+  gameOverPanel: {fileID: 2108477562}
   gameOverText1: {fileID: 249468376}
   gameOverText2: {fileID: 1345637583}
   scoreManager: {fileID: 249468375}
